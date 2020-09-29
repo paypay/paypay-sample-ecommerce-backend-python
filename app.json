@@ -1,0 +1,19 @@
+{
+  "name": "paypay-sample-ecommerce-python-bk",
+  "description": "A functional E-Commerce site developed in VueJS to demonstrate PayPay's different language SDK's implementations\n\n",
+  "repository": "https://github.com/paypay/paypay-sample-ecommerce",
+  "env": {
+    "API_KEY": {
+      "description": "PayPay API Key",
+      "value": ""
+    },
+    "API_SECRET": {
+      "description": "PayPay API Secret",
+      "value": ""
+    },
+    "REDIRECT_PATH": {
+      "description": "Frontend Path of your store",
+      "value": "https://{YOUR-APP}.herokuapp.com/orderpayment"
+    }
+  }
+}
