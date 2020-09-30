@@ -29,4 +29,4 @@ You should now have the API server running on http://localhost:5000
 Additionally to trying out this application locally, you can deploy it to a variety of host services.
 
 
-[![Deploy with Heroku](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy/?template=https://github.com/paypay/paypay-sample-ecommerce/tree/master) 
+[![Deploy with Heroku](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy/?template=https://github.com/paypay/paypay-sample-ecommerce-backend-python/tree/master) 
