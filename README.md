@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/:license-apache2.0-red.svg)](https://opensource.org/licenses/Apache-2.0)
 
-# Python SDK Implementation
+# paypay-sample-ecommerce-backend-python
 
 This is a python based implementation of PayPay's SDK. For the demonstration purpose we have used a simple Flask server with polling library to create QR code link and to check the order status of a QR code
 
