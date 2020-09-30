@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/:license-apache2.0-red.svg)](https://opensource.org/licenses/Apache-2.0)
+
 # paypay-sample-ecommerce-backend-python
 
 This is a python based implementation of PayPay's SDK. For the demonstration purpose we have used a simple Flask server with polling library to create QR code link and to check the order status of a QR code
@@ -22,3 +24,9 @@ $ flask run
 ```
 You should now have the API server running on http://localhost:5000
 
+### Cloud deployment
+
+Additionally to trying out this application locally, you can deploy it to a variety of host services.
+
+
+[![Deploy with Heroku](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy/?template=https://github.com/paypay/paypay-sample-ecommerce-backend-python/tree/master) 
