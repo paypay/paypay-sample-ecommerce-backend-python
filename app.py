@@ -110,7 +110,6 @@ def get_cakes():
 def creat_qr():
     req = request.json
     print(req)
-    client = paypayopa.Client(auth=(API_KEY, API_SECRET))
     merchant_payment_id = uuid.uuid4().hex
     payment_details = {
         "merchantPaymentId": merchant_payment_id,
@@ -120,7 +119,7 @@ def creat_qr():
         "redirectUrl": "{}/{}".format(FRONTEND_PATH, merchant_payment_id),
         "redirectType": "WEB_LINK",
     }
-    resp = client.code.create_qr_code(data=payment_details)
+    resp = client.Code.create_qr_code(data=payment_details)
     return json.dumps(resp)
 
 
@@ -130,7 +129,7 @@ def is_correct_response(resp):
 
 
 def fetch_payment_details(merchant_id):
-    resp = client.code.get_payment_details(merchant_id)
+    resp = client.Code.get_payment_details(merchant_id)
     if (resp['data'] == 'None'):
         return {
             'error': 'true'
@@ -146,7 +145,7 @@ def order_status(merch_id):
         check_success=is_correct_response,
         step=2,
         timeout=240)
-    return client.code.get_payment_details(merch_id)
+    return client.Code.get_payment_details(merch_id)
 
 
 if __name__ == '__main__':
