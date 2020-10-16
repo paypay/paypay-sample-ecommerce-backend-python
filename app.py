@@ -10,18 +10,21 @@ import json
 _DEBUG = os.environ.get("_DEBUG", default=True)
 API_KEY = os.environ.get("API_KEY")
 API_SECRET = os.environ.get("API_SECRET")
+MERCHANT_ID=  os.environ.get("MERCHANT_ID")
 FRONTEND_PATH = os.environ.get("REDIRECT_PATH", default="http://localhost:8080/orderpayment")
 
 if not API_KEY:
     raise ValueError("No API_KEY set for Flask application")
 if not API_SECRET:
     raise ValueError("No API_SECRET set for Flask application")
+if not MERCHANT_ID:
+    raise ValueError("No MERCHANT_ID set for Flask application")
 
 client = paypayopa.Client(
     auth=(API_KEY, API_SECRET),
     production_mode=False)  # Set True for Production Environment. By Default this is set False for Sandbox Environment
 
-client.set_assume_merchant("MUNE_CAKE_SHOP")
+client.set_assume_merchant(MERCHANT_ID)
 
 app = Flask(__name__)
 cors = CORS(app)
