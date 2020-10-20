@@ -16,6 +16,7 @@ $ pip install -r requirements.txt
 ```sh
 $ export API_KEY="REPLACE_WITH_YOUR_API_KEY"
 $ export API_SECRET="REPLACE_WITH_YOUR_SECRET_KEY" 
+$ export MERCHANT_ID="REPLACE_WITH_YOUR_MERCHANT_ID" 
 ```
 
 ### Run Flask API server

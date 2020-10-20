@@ -10,18 +10,21 @@ import json
 _DEBUG = os.environ.get("_DEBUG", default=True)
 API_KEY = os.environ.get("API_KEY")
 API_SECRET = os.environ.get("API_SECRET")
+MERCHANT_ID=  os.environ.get("MERCHANT_ID")
 FRONTEND_PATH = os.environ.get("REDIRECT_PATH", default="http://localhost:8080/orderpayment")
 
 if not API_KEY:
     raise ValueError("No API_KEY set for Flask application")
 if not API_SECRET:
     raise ValueError("No API_SECRET set for Flask application")
+if not MERCHANT_ID:
+    raise ValueError("No MERCHANT_ID set for Flask application")
 
 client = paypayopa.Client(
     auth=(API_KEY, API_SECRET),
     production_mode=False)  # Set True for Production Environment. By Default this is set False for Sandbox Environment
 
-client.set_assume_merchant("MUNE_CAKE_SHOP")
+client.set_assume_merchant(MERCHANT_ID)
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -107,7 +110,6 @@ def get_cakes():
 def creat_qr():
     req = request.json
     print(req)
-    client = paypayopa.Client(auth=(API_KEY, API_SECRET))
     merchant_payment_id = uuid.uuid4().hex
     payment_details = {
         "merchantPaymentId": merchant_payment_id,
@@ -117,7 +119,7 @@ def creat_qr():
         "redirectUrl": "{}/{}".format(FRONTEND_PATH, merchant_payment_id),
         "redirectType": "WEB_LINK",
     }
-    resp = client.code.create_qr_code(data=payment_details)
+    resp = client.Code.create_qr_code(data=payment_details)
     return json.dumps(resp)
 
 
@@ -127,7 +129,7 @@ def is_correct_response(resp):
 
 
 def fetch_payment_details(merchant_id):
-    resp = client.code.get_payment_details(merchant_id)
+    resp = client.Code.get_payment_details(merchant_id)
     if (resp['data'] == 'None'):
         return {
             'error': 'true'
@@ -143,7 +145,7 @@ def order_status(merch_id):
         check_success=is_correct_response,
         step=2,
         timeout=240)
-    return client.code.get_payment_details(merch_id)
+    return client.Code.get_payment_details(merch_id)
 
 
 if __name__ == '__main__':
