@@ -30,6 +30,13 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+if not API_KEY:
+    raise ValueError("No API_KEY set for Flask application")
+if not API_SECRET:
+    raise ValueError("No API_SECRET set for Flask application")
+if not MERCHANT_ID:
+    raise ValueError("No MERCHANT_ID set for Flask application")
+
 CAKES = [
     {
         "title": "cake_shop.mississippi",
