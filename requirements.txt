@@ -1,4 +1,4 @@
-Flask==2.0.0
+Flask==2.3.2
 Flask-Cors==3.0.10
 paypayopa>=0.6.0
 polling==0.3.1
